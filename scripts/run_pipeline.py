@@ -1,29 +1,46 @@
-import subprocess
-import papermill as pm
 import os
+import shutil
+from datetime import datetime
+import subprocess
 
-def run_main_script():
-    """Ejecuta el script principal y captura la salida."""
-    result = subprocess.run(['python', 'scripts/data_extraction.py'], capture_output=True, text=True)
-    output_file = result.stdout.strip()
-    return output_file
+# Obtener el directorio actual donde se encuentra run_pipeline.py
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
-def run_eda_notebook(csv_file):
-    """Ejecuta el notebook de EDA usando papermill."""
-    pm.execute_notebook(
-        'notebooks/data_analysis.ipynb',  # Path al notebook EDA
-        'notebooks/data_analysis_output.ipynb',  # Output del notebook ejecutado
-        parameters=dict(csv_file=csv_file)
-    )
+# Ruta del intérprete de Python del entorno virtual
+python_executable = os.path.join(current_dir, '..', 'env', 'Scripts', 'python.exe')
 
-def main():
-    """Función principal para ejecutar el pipeline completo."""
-    output_file = run_main_script()
-    
-    if os.path.exists(output_file):
-        run_eda_notebook(output_file)
-    else:
-        print(f"Error: El archivo {output_file} no se encontró.")
+# Verifica si el intérprete existe
+if not os.path.isfile(python_executable):
+    raise FileNotFoundError(f"No se encontró el archivo {python_executable}")
 
-if __name__ == "__main__":
-    main()
+# Paso 1: Ejecutar data_extraction.py
+data_extraction_path = os.path.join(current_dir, 'data_extraction.py')
+subprocess.run([python_executable, data_extraction_path], check=True)
+print("data_extraction.py ejecutado correctamente.")
+
+# Paso 2: Crear una carpeta con la fecha actual en formato YYYYMMDD en la ubicación correcta
+fecha_actual = datetime.now().strftime('%Y%m%d')
+historical_analysis_dir = os.path.join(current_dir, '..', 'notebooks', 'historical_analysis')
+carpeta_destino = os.path.join(historical_analysis_dir, fecha_actual)
+
+if not os.path.exists(carpeta_destino):
+    os.makedirs(carpeta_destino)
+
+# Paso 3: Copiar el archivo data_analysis.ipynb con el nuevo nombre
+data_analysis_path = os.path.join(current_dir, '..', 'notebooks', 'data_analysis.ipynb')
+nombre_nuevo_notebook = f"data_analysis{fecha_actual}.ipynb"
+ruta_destino_notebook = os.path.join(carpeta_destino, nombre_nuevo_notebook)
+
+if not os.path.isfile(data_analysis_path):
+    raise FileNotFoundError(f"No se encontró el archivo {data_analysis_path}")
+
+shutil.copy2(data_analysis_path, ruta_destino_notebook)
+
+# Paso 4: Ejecutar el nuevo archivo data_analysisYYYYMMDD.ipynb
+# Ejecutar el notebook y guardar la salida
+command = f"jupyter nbconvert --to notebook --execute --output {ruta_destino_notebook} {ruta_destino_notebook}"
+subprocess.run(command, shell=True, check=True)
+
+print(f"Notebook ejecutado y guardado en: {ruta_destino_notebook}")
+
+
