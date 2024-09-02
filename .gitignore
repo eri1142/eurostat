@@ -1,0 +1,93 @@
+# Archivos y carpetas de entornos virtuales de Python
+env/
+venv/
+ENV/
+.venv/
+.VENV/
+
+# Archivos generados por Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+*.bak
+
+# Archivos de configuración de entorno
+*.env
+.env.*
+
+# Archivos de configuración de editores y sistemas operativos
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.DS_Store
+*.vagrant/
+*.log
+
+# Archivos y carpetas de dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pip-log.txt
+Pipfile.lock
+
+# Archivos de compilación y distribución
+dist/
+build/
+*.egg-info/
+*.egg
+*.whl
+
+# Archivos de base de datos y cachés
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Archivos de configuración específicos del sistema operativo
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Archivos relacionados con contenedores Docker
+docker-compose.override.yml
+docker-compose.prod.yml
+
+# Archivos de configuración y claves privadas
+*.key
+*.pem
+*.crt
+*.cert
+*.cer
+*.pfx
+*.p12
+*.jks
+
+# Archivos de backup y temporales
+*.bak
+*.tmp
+*.temp
+~$*
+
+# Ignorar archivos de documentación generados automáticamente
+docs/_build/
+site/
+*.rst
+
+# Archivos de prueba y cobertura
+.coverage
+*.cover
+*.gcov
+*.gcda
+*.gcno
+*.lcov
+coverage/
+coverage.*.xml
+nosetests.xml
