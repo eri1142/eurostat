@@ -41,10 +41,12 @@ shutil.copy2(data_analysis_path, ruta_destino_notebook)
 command = f"jupyter nbconvert --to notebook --execute --output {ruta_destino_notebook} {ruta_destino_notebook}"
 subprocess.run(command, shell=True, check=True)
 
+"""
 # Paso 5: Convertir el notebook a HTML usando Quarto
 # Generar el archivo HTML en el mismo directorio
 html_output_path = os.path.join(carpeta_destino, f"data_analysis_{fecha_actual}.html")
 quarto_command = f"quarto convert {ruta_destino_notebook} --to html --output {html_output_path}"
 subprocess.run(quarto_command, shell=True, check=True)
+"""
 
 print(f"Notebook ejecutado y guardado en: {ruta_destino_notebook}")
