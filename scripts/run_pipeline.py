@@ -28,7 +28,7 @@ if not os.path.exists(carpeta_destino):
 
 # Paso 3: Copiar el archivo data_analysis.ipynb con el nuevo nombre
 data_analysis_path = os.path.join(current_dir, '..', 'notebooks', 'data_analysis.ipynb')
-nombre_nuevo_notebook = f"data_analysis{fecha_actual}.ipynb"
+nombre_nuevo_notebook = f"data_analysis_{fecha_actual}.ipynb"
 ruta_destino_notebook = os.path.join(carpeta_destino, nombre_nuevo_notebook)
 
 if not os.path.isfile(data_analysis_path):
@@ -36,11 +36,9 @@ if not os.path.isfile(data_analysis_path):
 
 shutil.copy2(data_analysis_path, ruta_destino_notebook)
 
-# Paso 4: Ejecutar el nuevo archivo data_analysisYYYYMMDD.ipynb
+# Paso 4: Ejecutar el nuevo archivo data_analysis_YYYYMMDD.ipynb
 # Ejecutar el notebook y guardar la salida
 command = f"jupyter nbconvert --to notebook --execute --output {ruta_destino_notebook} {ruta_destino_notebook}"
 subprocess.run(command, shell=True, check=True)
 
 print(f"Notebook ejecutado y guardado en: {ruta_destino_notebook}")
-
-

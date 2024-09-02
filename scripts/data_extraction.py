@@ -4,11 +4,24 @@ import pandas as pd
 import os
 
 
+###################################### Control de directorios
+
+# Obtener la ruta absoluta del directorio del script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Verificar si la carpeta "datafilecsv" existe, si no, crearla
+carpeta = os.path.join(script_dir, '..', 'datafilecsv')
+
+if not os.path.exists(carpeta):
+    os.makedirs(carpeta)
+
+###################################### Control de tiempo
 
 # Obtener datetime de ejecución
 from datetime import datetime 
 fecha_actual = datetime.now().strftime("%d-%m-%Y") #Formatear fecha DD/MM/YYYY
 
+###################################### Funciones de obtención de datos
 
 def explore_json(data, level=0):
     """
@@ -136,7 +149,7 @@ def extract_data():
 
     # Crear un DataFrame con los campos geo, time, y value
     df = pd.DataFrame(records)
-    carpeta = r"C:\DataAnalysis\Eurostat\datafilecsv"  # Ruta carpeta ficheros
+    # carpeta = r"C:\DataAnalysis\Eurostat\datafilecsv"  # Ruta carpeta ficheros
     tmpnombre = f"prc_hicp_manr_{fecha_actual}.csv"
     nombre_archivo = os.path.join(carpeta, f"{tmpnombre}")  # Crear el nombre del archivo con la fecha y configurar la ruta
 
@@ -144,8 +157,8 @@ def extract_data():
     df.to_csv(nombre_archivo, index=False)  # Guardar los datos en CSV
 
     # Después de guardar el CSV, guardamos el nombre del archivo en un archivo de texto
-    with open(os.path.join("datafilecsv", "latest_output.txt"), "w") as f:
-        f.write(tmpnombre)
+    with open(os.path.join(carpeta, "latest_output.txt"), "w") as f:
+        f.write(nombre_archivo)
     
     print(f"Nombre del archivo CSV guardado:{nombre_archivo}")
     print(f"Nombre del archivo TXT actualizado: latest_output.txt")
