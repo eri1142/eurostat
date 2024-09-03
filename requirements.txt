@@ -5,5 +5,5 @@ seaborn
 requests
 nbconvert
 jupyter
-quarto
 plotly
+# quarto
