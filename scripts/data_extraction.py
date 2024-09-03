@@ -42,6 +42,26 @@ def explore_json(data, level=0):
 
 # Definimos la tabla coicop_codes
 
+"""
+coicop_codes = [
+    {"_ClassificationCOICOP": "All-items HICP", "_CodeIDCOICOP": "CP00"},
+    {"_ClassificationCOICOP": "Food and non-alcoholic beverages", "_CodeIDCOICOP": "CP01"},
+    {"_ClassificationCOICOP": "Alcoholic beverages, tobacco and narcotics", "_CodeIDCOICOP": "CP02"},
+    {"_ClassificationCOICOP": "Clothing and footwear", "_CodeIDCOICOP": "CP03"},
+    {"_ClassificationCOICOP": "Housing, water, electricity, gas and other fuels", "_CodeIDCOICOP": "CP04"},
+    {"_ClassificationCOICOP": "Furnishings, household equipment and routine household maintenance", "_CodeIDCOICOP": "CP05"},
+    {"_ClassificationCOICOP": "Health", "_CodeIDCOICOP": "CP06"},
+    {"_ClassificationCOICOP": "Transport", "_CodeIDCOICOP": "CP07"},
+    {"_ClassificationCOICOP": "Communications", "_CodeIDCOICOP": "CP08"},
+    {"_ClassificationCOICOP": "Recreation and culture", "_CodeIDCOICOP": "CP09"},
+    {"_ClassificationCOICOP": "Education", "_CodeIDCOICOP": "CP10"},
+    {"_ClassificationCOICOP": "Restaurants and hotels", "_CodeIDCOICOP": "CP11"},
+    {"_ClassificationCOICOP": "Miscellaneous goods and services", "_CodeIDCOICOP": "CP12"},
+    {"_ClassificationCOICOP": "Food including alcohol and tobacco", "_CodeIDCOICOP": "FOOD"},
+]
+"""
+
+# Nuevo listado mas subfamilias
 coicop_codes = [
     {"_ClassificationCOICOP": "All-items HICP", "_CodeIDCOICOP": "CP00"},
     {"_ClassificationCOICOP": "Food and non-alcoholic beverages", "_CodeIDCOICOP": "CP01"},
@@ -120,10 +140,9 @@ coicop_codes = [
     {"_ClassificationCOICOP": "Sauces, condiments", "_CodeIDCOICOP": "CP01191"},
     {"_ClassificationCOICOP": "Salt, spices and culinary herbs", "_CodeIDCOICOP": "CP01192"},
     {"_ClassificationCOICOP": "Baby food", "_CodeIDCOICOP": "CP01193"},
-    {"_ClassificationCOICOP": "Ready-made meals", "_CodeIDCOIC": "CP01194"},
-    {"_ClassificationCOICOP": "Other food products n.e.c.", "_CodeIDCOIC": "CP01199"},
-    ]   
-
+    {"_ClassificationCOICOP": "Ready-made meals", "_CodeIDCOICOP": "CP01194"},
+    {"_ClassificationCOICOP": "Other food products n.e.c.", "_CodeIDCOICOP": "CP01199"},
+]
 
 # Definimos la tabla geo_codes
 
