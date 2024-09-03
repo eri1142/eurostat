@@ -1,1 +1,1 @@
-C:\DataAnalysis\Eurostat\scripts\..\datafilecsv\prc_hicp_manr_02-09-2024.csv
+C:\Datos\git_eurostat\eurostat\scripts\..\datafilecsv\prc_hicp_manr_03-09-2024.csv
